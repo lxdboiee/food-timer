@@ -2,3 +2,5 @@
 
 /* Larger, high-contrast timestamps for quick kitchen use */
 .circle .clock{font-size:clamp(19px,5vw,29px);font-weight:900;letter-spacing:-1px;line-height:1.05}.circle .tick{font-size:11px;line-height:1}.circle.done{box-shadow:inset 0 0 0 1px #a8dbb8}@media(min-width:750px){.circle .clock{font-size:26px}}@media(max-width:390px){.circle .clock{font-size:clamp(17px,5vw,21px)}.circle{padding:2px}}
+/* v2.3: Food-type stacks with latest batch on top */
+.stack{display:grid;grid-template-columns:1fr;gap:16px}.foodgroup{background:#edf3ee;border:1px solid #dfe9e1;border-radius:22px;padding:12px}.grouphead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 5px 13px;flex-wrap:wrap}.grouphead h3{font-size:18px;margin:0 0 3px;color:#214d37}.grouphead .row{gap:6px}.groupcards{display:grid;gap:10px}.groupcards .food{margin:0}.batchlabel{display:block;font-size:12px;font-weight:850;color:#316e4e;margin-bottom:4px}.groupcards .foodhead{align-items:center}@media(min-width:850px){.stack{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:390px){.grouphead .small{padding:8px;font-size:11px}.foodgroup{padding:8px}}
