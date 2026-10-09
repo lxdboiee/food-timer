@@ -19,3 +19,8 @@
 @media(min-width:750px){.timer-peek{width:98px;height:19px;min-height:19px;font-size:13px;line-height:16px}.timer-peek span{line-height:16px}}
 @media(max-width:390px){.timer-peek{height:15px;min-height:15px;font-size:10px;line-height:12px}.timer-peek span{line-height:12px}}
 @media(prefers-reduced-motion:reduce){.timer-peek{transition:none}}
+
+/* v2.6: concise prep clock and distinct disposal state */
+.prep-alert{margin:13px 0 0;padding:9px 11px;border-radius:11px;font-size:12px;font-weight:750;background:#e7f4e9;color:#216a42}.prep-alert.warn{background:#fff0d0;color:#865b05}.prep-alert.danger{background:#ffe1dc;color:#a42d28}.circle.disposed{background:#ffe4df;border-color:#d9675d}.circle.disposed .clock,.circle.disposed .tick{color:#a72c24}.disposition{display:flex;gap:10px;margin:18px 0}.disposition button{flex:1;padding:16px 8px;font-size:16px}.steplabel{min-height:30px}
+
+.templatefoods{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.disposed-row{background:#fff0ef!important}.dangertext{font-weight:800;color:#b91c1c}.printheading{align-items:flex-start}@media print{nav,.no-print,#banner,header .actions,#language{display:none!important}body{background:white!important;color:black!important}.panel{box-shadow:none!important;border:1px solid #bbb;break-inside:avoid}.tablewrap{overflow:visible!important}table{font-size:9pt}th,td{padding:5px!important}main{width:100%!important;max-width:none!important}}
