@@ -2,6 +2,31 @@
 
 /* Larger, high-contrast timestamps for quick kitchen use */
 .circle .clock{font-size:clamp(19px,5vw,29px);font-weight:900;letter-spacing:-1px;line-height:1.05}.circle .tick{font-size:11px;line-height:1}.circle.done{box-shadow:inset 0 0 0 1px #a8dbb8}@media(min-width:750px){.circle .clock{font-size:26px}}@media(max-width:390px){.circle .clock{font-size:clamp(17px,5vw,21px)}.circle{padding:2px}}
+/* v2.3: Food-type stacks with latest batch on top */
+.stack{display:grid;grid-template-columns:1fr;gap:16px}.foodgroup{background:#edf3ee;border:1px solid #dfe9e1;border-radius:22px;padding:12px}.grouphead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 5px 13px;flex-wrap:wrap}.grouphead h3{font-size:18px;margin:0 0 3px;color:#214d37}.grouphead .row{gap:6px}.groupcards{display:grid;gap:10px}.groupcards .food{margin:0}.batchlabel{display:block;font-size:12px;font-weight:850;color:#316e4e;margin-bottom:4px}.groupcards .foodhead{align-items:center}@media(min-width:850px){.stack{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:390px){.grouphead .small{padding:8px;font-size:11px}.foodgroup{padding:8px}}
 
-/* v3 rebuilt from stable v2.2: food catalogue always visible */
-.foodhead{align-items:center}.add-inline{padding:9px 12px;white-space:nowrap;background:#e9f4ed;color:#205f47;border:1px solid #b5d9c1}.add-prominent{background:#176e47;color:#fff;border-color:#176e47;box-shadow:0 3px 10px #176e4733}.empty-food{background:#f7faf7;color:#718579;text-align:center;padding:25px 8px;border-radius:14px;font-size:14px}.empty-food span{font-size:12px}.batchbar{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:-6px 0 14px;color:#708078;font-size:11px}.batchbar button{padding:7px 9px;font-size:11px}.batchbar button:disabled{opacity:.3;cursor:default}.food .qty{justify-content:flex-end;margin:-5px 0 12px}.circle-stack{position:relative;padding-top:28px}.circle-peek{position:absolute;left:50%;transform:translateX(-50%);width:min(95%,106px);height:62px;border-radius:50%;background:#e1e8e2;border:1px solid #cbd7cd;color:#536b5b;text-align:center;font-size:11px;font-weight:800;padding-top:3px;pointer-events:none}.circle-stack .circle{position:relative;z-index:2}.sold-circle{background:#d6f5df!important;border-color:#2d995b!important}.disposed-card{background:#f1f2f1;border-color:#e0e2e0;box-shadow:none}.disposed-card .circle{filter:grayscale(1);opacity:.56}.pill.mutedpill{background:#dce0dd;color:#606e65}.food{touch-action:pan-y}@media(max-width:390px){.batchbar{font-size:10px}.batchbar button{padding:7px 6px}.add-inline{font-size:12px;padding:8px}}
+/* v2.4 compact layered batches: one visible timer card at a time */
+.foodgroup{overflow:visible}.groupcards.layered{position:relative;margin:0 8px 13px 0;isolation:isolate}.groupcards.layered:before,.groupcards.layered:after{content:"";position:absolute;inset:7px -5px -7px 5px;background:#d9e8dc;border:1px solid #c9dbce;border-radius:20px;z-index:-1;pointer-events:none}.groupcards.layered:after{inset:13px -10px -13px 10px;background:#c9ddcf;z-index:-2}.groupcards.layered .food{position:relative;background:#fff}.grouphead .row button[data-togglefood]{background:#dcebe0;border-color:#b8d4c0;color:#1e6440;font-weight:850}.grouphead .row button[data-togglefood]:active{transform:scale(.96)}
+
+/* v2.5: only a slim 20% arc of older timer circles is exposed. */
+.groupcards.layered:before,.groupcards.layered:after{display:none}
+.timer-stack{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0}
+.timer-peek{display:flex;align-items:flex-start;justify-content:center;overflow:hidden;width:min(100%,112px);height:17px;min-height:17px;margin:0 auto -1px;padding:0;border:2px solid #b6cbbf;border-bottom:0;border-radius:999px 999px 0 0;background:#e3ede6;color:#4b6957;font-size:clamp(10px,2.8vw,13px);font-weight:850;line-height:14px;letter-spacing:-.4px;position:relative;transition:height .16s,background .16s}
+.timer-peek.has-time{background:#d8e7dc;border-color:#94b8a1;color:#315f45}
+.timer-peek:hover,.timer-peek:focus-visible{height:23px;background:#c4dfcd;outline-offset:2px}
+.timer-peek span{display:block;line-height:14px;white-space:nowrap}
+.timer-stack>.circle{flex-shrink:0;position:relative;z-index:1}
+@media(min-width:750px){.timer-peek{width:98px;height:19px;min-height:19px;font-size:13px;line-height:16px}.timer-peek span{line-height:16px}}
+@media(max-width:390px){.timer-peek{height:15px;min-height:15px;font-size:10px;line-height:12px}.timer-peek span{line-height:12px}}
+@media(prefers-reduced-motion:reduce){.timer-peek{transition:none}}
+/* v2.5 appearance retained: clear completion states and an inviting next-batch action */
+.pill.sold{background:#dcf6e7;color:#14663d;border:1px solid #9dd9b6}
+.pill.disposed{background:#e9eceb;color:#65736b;border:1px solid #d3dad6}
+.newbatch-cta{background:#177d50;color:#fff;border-radius:13px;padding:10px 14px;font-size:13px;font-weight:850;box-shadow:0 4px 12px #13784827}
+.newbatch-cta:hover{background:#0c6840}
+.foodgroup:has(.pill.disposed) .food{background:#f7f8f7;border-color:#d8dfda}
+.foodgroup:has(.pill.disposed) .circle{filter:grayscale(.75);opacity:.7}
+.foodgroup:has(.pill.disposed) .pill.disposed{opacity:1}
+.foodgroup:has(.pill.sold) .newbatch-cta{animation:next-batch-in .25s ease-out}
+@keyframes next-batch-in{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.newbatch-cta{animation:none!important}}
